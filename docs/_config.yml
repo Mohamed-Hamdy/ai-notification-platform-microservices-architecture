@@ -1,0 +1,40 @@
+title: AI Notification Platform
+description: Production-ready microservices notification platform with AI optimization
+theme: just-the-docs
+
+url: https://yourusername.github.io
+baseurl: /ai-notification-platform
+
+color_scheme: light
+
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+heading_anchors: true
+
+aux_links:
+  "View on GitHub":
+    - "//github.com/yourusername/ai-notification-platform"
+
+footer_content: "Copyright &copy; 2024. Distributed under the MIT License."
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+callouts:
+  warning:
+    title: Warning
+    color: red
+  note:
+    title: Note
+    color: blue
+  important:
+    title: Important
+    color: yellow

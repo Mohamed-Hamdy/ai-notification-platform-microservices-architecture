@@ -1,0 +1,444 @@
+{
+  "info": {
+    "name": "AI Notification Platform",
+    "description": "Collection for testing the AI Notification Platform microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Checks",
+      "item": [
+        {
+          "name": "Notification Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/notifications/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications", "health"]
+            }
+          }
+        },
+        {
+          "name": "AI Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/ai/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Service",
+      "item": [
+        {
+          "name": "Create Notification - Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"user@example.com\",\n  \"subject\": \"Welcome to Our Platform\",\n  \"message\": \"Thank you for signing up! We're excited to have you on board.\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - SMS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"+1234567890\",\n  \"subject\": \"Order Confirmation\",\n  \"message\": \"Your order #12345 has been confirmed. Expected delivery: Tomorrow.\",\n  \"channel\": \"SMS\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - PUSH",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"device-token-xyz-123\",\n  \"subject\": \"New Message\",\n  \"message\": \"You have a new message from John Doe\",\n  \"channel\": \"PUSH\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - Bulk Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"newsletter@example.com\",\n  \"subject\": \"Weekly Newsletter - January 2024\",\n  \"message\": \"Check out this week's top stories, exclusive deals, and community highlights!\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - Password Reset",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"admin@example.com\",\n  \"subject\": \"Password Reset Request\",\n  \"message\": \"Click the link below to reset your password. Link: https://example.com/reset?token=abc123xyz\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - Promo Code",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"customer@example.com\",\n  \"subject\": \"Exclusive Offer: 50% Off Today\",\n  \"message\": \"Use code SAVE50 to get 50% off your next purchase. Valid for today only!\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - Invalid Channel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"test@example.com\",\n  \"subject\": \"Test\",\n  \"message\": \"This should fail\",\n  \"channel\": \"INVALID\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Notification - Missing Field",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"test@example.com\",\n  \"subject\": \"Test\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Service",
+      "item": [
+        {
+          "name": "Optimize Email Subject",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Welcome to our platform\",\n  \"message\": \"Thank you for signing up!\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        },
+        {
+          "name": "Optimize SMS Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Order Status Update\",\n  \"message\": \"Your order has been shipped and is on its way to your address\",\n  \"channel\": \"SMS\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        },
+        {
+          "name": "Optimize PUSH Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"New Message Alert\",\n  \"message\": \"You have received a new message from your friend. Open the app to read it now.\",\n  \"channel\": \"PUSH\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        },
+        {
+          "name": "Optimize - High Engagement Subject",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Don't miss out on this opportunity\",\n  \"message\": \"We have a special limited-time offer just for you\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        },
+        {
+          "name": "Optimize - Long Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Comprehensive Platform Update\",\n  \"message\": \"We're thrilled to announce a major update to our platform with new features including advanced analytics, improved performance, enhanced security, and a completely redesigned user interface that will make your experience smoother than ever before.\",\n  \"channel\": \"SMS\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        },
+        {
+          "name": "Optimize - Missing Channel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Test\",\n  \"message\": \"This should fail\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/ai/optimize",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["ai", "optimize"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Integration Tests",
+      "item": [
+        {
+          "name": "End-to-End: Create and Optimize",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"integration-test@example.com\",\n  \"subject\": \"Integration Test\",\n  \"message\": \"This is a test notification for integration testing\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            },
+            "description": "Create a notification and then use the AI service to optimize similar content"
+          }
+        },
+        {
+          "name": "Load Test - Create Multiple Notifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"load-test-{{$randomInt}}-{{$timestamp}}@example.com\",\n  \"subject\": \"Load Test Notification {{$randomInt}}\",\n  \"message\": \"This is a load test notification number {{$randomInt}}\",\n  \"channel\": \"EMAIL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["notifications"]
+            },
+            "description": "Use Postman's collection runner to send this multiple times for load testing"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url_notification",
+      "value": "http://localhost:8081",
+      "type": "string"
+    },
+    {
+      "key": "base_url_ai",
+      "value": "http://localhost:8083",
+      "type": "string"
+    },
+    {
+      "key": "notification_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
