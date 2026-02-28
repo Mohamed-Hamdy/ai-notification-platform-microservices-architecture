@@ -2,8 +2,8 @@ title: AI Notification Platform
 description: Production-ready microservices notification platform with AI optimization
 theme: just-the-docs
 
-url: https://yourusername.github.io
-baseurl: /ai-notification-platform
+url: https://mohamed-hamdy.github.io
+baseurl: /ai-notification-platform-microservices-architecture
 
 color_scheme: light
 
@@ -23,7 +23,7 @@ aux_links:
   "View on GitHub":
     - "//github.com/Mohamed-Hamdy/ai-notification-platform-microservices-architecture"
 
-footer_content: "Copyright &copy; 2024. Distributed under the MIT License."
+footer_content: "Copyright © 2024 Mohamed Hamdy. Distributed under the MIT License."
 
 back_to_top: true
 back_to_top_text: "Back to top"
