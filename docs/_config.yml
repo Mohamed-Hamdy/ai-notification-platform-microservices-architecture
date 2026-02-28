@@ -21,7 +21,7 @@ heading_anchors: true
 
 aux_links:
   "View on GitHub":
-    - "//github.com/yourusername/ai-notification-platform"
+    - "//github.com/Mohamed-Hamdy/ai-notification-platform-microservices-architecture"
 
 footer_content: "Copyright &copy; 2024. Distributed under the MIT License."
 
