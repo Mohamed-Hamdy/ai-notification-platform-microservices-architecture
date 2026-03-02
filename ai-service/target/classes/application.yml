@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ai-service
+
+server:
+  port: ${SERVER_PORT:8083}
+
+logging:
+  level:
+    com.ai: DEBUG
+    org.springframework: INFO

@@ -1,0 +1,15 @@
+com\notification\dto\NotificationEvent$NotificationEventBuilder.class
+com\notification\dto\NotificationEvent.class
+com\notification\service\KafkaProducerService.class
+com\notification\config\KafkaProducerConfig.class
+com\notification\dto\NotificationResponse$NotificationResponseBuilder.class
+com\notification\model\Notification$NotificationBuilder.class
+com\notification\service\NotificationService.class
+com\notification\dto\NotificationRequest$NotificationRequestBuilder.class
+com\notification\model\NotificationStatus.class
+com\notification\repository\NotificationRepository.class
+com\notification\model\Notification.class
+com\notification\NotificationServiceApplication.class
+com\notification\controller\NotificationController.class
+com\notification\dto\NotificationResponse.class
+com\notification\dto\NotificationRequest.class

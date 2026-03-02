@@ -24,17 +24,17 @@ docker-compose ps
 Terminal 1 - Notification Service (Port 8081):
 
 
-cd ai-notification-platform/notification-service
+cd .\notification-service
 mvn spring-boot:run
 Terminal 2 - Worker Service:
 
 
-cd ai-notification-platform/worker-service
+cd .\worker-service
 mvn spring-boot:run
 Terminal 3 - AI Service (Port 8083):
 
 
-cd ai-notification-platform/ai-service
+cd .\ai-service
 mvn spring-boot:run
 4. Test the Setup
 

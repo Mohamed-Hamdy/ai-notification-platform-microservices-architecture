@@ -1,0 +1,7 @@
+com\ai\dto\OptimizationResponse$OptimizationResponseBuilder.class
+com\ai\service\AiOptimizationService.class
+com\ai\AiServiceApplication.class
+com\ai\controller\AiController.class
+com\ai\dto\OptimizationRequest$OptimizationRequestBuilder.class
+com\ai\dto\OptimizationResponse.class
+com\ai\dto\OptimizationRequest.class

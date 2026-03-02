@@ -1,0 +1,11 @@
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\NotificationServiceApplication.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\config\KafkaProducerConfig.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\dto\NotificationEvent.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\dto\NotificationResponse.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\controller\NotificationController.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\dto\NotificationRequest.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\service\NotificationService.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\service\KafkaProducerService.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\model\Notification.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\repository\NotificationRepository.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\notification-service\src\main\java\com\notification\model\NotificationStatus.java
