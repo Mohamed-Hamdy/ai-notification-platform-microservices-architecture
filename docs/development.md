@@ -119,16 +119,16 @@ The notifications table is automatically created by Hibernate on startup:
 
 ```sql
 CREATE TABLE notifications (
-    id BIGSERIAL PRIMARY KEY,
-    recipient VARCHAR(255) NOT NULL,
-    subject VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL,
-    channel VARCHAR(50) NOT NULL,
-    status VARCHAR(50) NOT NULL,
-    retry_count INTEGER DEFAULT 0,
-    error_message TEXT,
-    created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP
+                              id BIGSERIAL PRIMARY KEY,
+                              recipient VARCHAR(255) NOT NULL,
+                              subject VARCHAR(255) NOT NULL,
+                              message TEXT NOT NULL,
+                              channel VARCHAR(50) NOT NULL,
+                              status VARCHAR(50) NOT NULL,
+                              retry_count INTEGER DEFAULT 0,
+                              error_message TEXT,
+                              created_at TIMESTAMP NOT NULL,
+                              updated_at TIMESTAMP
 );
 ```
 
@@ -173,10 +173,10 @@ Configure in `application.yml`:
 
 ```yaml
 logging:
-  level:
-    com.notification: DEBUG
-    org.springframework.kafka: INFO
-    org.hibernate: INFO
+   level:
+      com.notification: DEBUG
+      org.springframework.kafka: INFO
+      org.hibernate: INFO
 ```
 
 ### View Logs
@@ -218,10 +218,10 @@ Edit `src/main/resources/application.yml` for each service:
 
 ```yaml
 spring:
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:notification_db}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+   datasource:
+      url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:notification_db}
+      username: ${DB_USERNAME:postgres}
+      password: ${DB_PASSWORD:postgres}
 ```
 
 ## Code Style
@@ -242,17 +242,17 @@ spring:
 @Slf4j
 public class NotificationService {
 
-    private final NotificationRepository repository;
-    private final KafkaProducerService kafkaService;
+   private final NotificationRepository repository;
+   private final KafkaProducerService kafkaService;
 
-    @Transactional
-    public NotificationResponse createNotification(NotificationRequest request) {
-        log.info("Creating notification for: {}", request.getRecipient());
+   @Transactional
+   public NotificationResponse createNotification(NotificationRequest request) {
+      log.info("Creating notification for: {}", request.getRecipient());
 
-        // Implementation
+      // Implementation
 
-        return response;
-    }
+      return response;
+   }
 }
 ```
 
@@ -312,8 +312,8 @@ curl -X POST http://localhost:8083/ai/optimize \
 In `application.yml`:
 ```yaml
 logging:
-  level:
-    root: DEBUG
+   level:
+      root: DEBUG
 ```
 
 ### Debug with IDE
@@ -366,28 +366,28 @@ docker-compose up -d
 For production deployment:
 
 1. **Security**
-    - Implement Spring Security
-    - Add JWT authentication
-    - Enable SSL/TLS
-    - Use secrets management (Vault, AWS Secrets Manager)
+   - Implement Spring Security
+   - Add JWT authentication
+   - Enable SSL/TLS
+   - Use secrets management (Vault, AWS Secrets Manager)
 
 2. **Scalability**
-    - Deploy multiple instances
-    - Add load balancer
-    - Increase Kafka partitions
-    - Use read replicas for database
+   - Deploy multiple instances
+   - Add load balancer
+   - Increase Kafka partitions
+   - Use read replicas for database
 
 3. **Monitoring**
-    - Add Prometheus metrics
-    - Set up Grafana dashboards
-    - Implement ELK stack for logging
-    - Add distributed tracing (Zipkin/Jaeger)
+   - Add Prometheus metrics
+   - Set up Grafana dashboards
+   - Implement ELK stack for logging
+   - Add distributed tracing (Zipkin/Jaeger)
 
 4. **Reliability**
-    - Implement circuit breakers (Resilience4j)
-    - Add health checks
-    - Set up alerts
-    - Configure proper backup strategy
+   - Implement circuit breakers (Resilience4j)
+   - Add health checks
+   - Set up alerts
+   - Configure proper backup strategy
 
 ## Contributing
 

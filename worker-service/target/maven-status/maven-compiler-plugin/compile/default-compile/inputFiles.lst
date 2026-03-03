@@ -1,9 +1,14 @@
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\config\FeignConfig.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\repository\NotificationRepository.java
-D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\model\NotificationStatus.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\dto\AiEnhancementRequest.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\scheduler\RetryScheduler.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\config\KafkaConsumerConfig.java
-D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\consumer\NotificationConsumer.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\service\AiEnhancementService.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\dto\NotificationEvent.java
-D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\service\NotificationProcessingService.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\model\Notification.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\dto\AiEnhancementResponse.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\client\AiServiceClient.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\model\NotificationStatus.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\consumer\NotificationConsumer.java
+D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\service\NotificationProcessingService.java
 D:\Microservices AI-Powered High-Scale Notification Platform\ai-notification-platform-microservices-architecture\worker-service\src\main\java\com\worker\WorkerServiceApplication.java

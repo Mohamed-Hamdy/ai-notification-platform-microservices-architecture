@@ -1,7 +1,20 @@
 spring:
   application:
     name: worker-service
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:communitydevtips@gmail.com}
+    password: ${MAIL_PASSWORD:mqde jqwn mdfy opfi}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        ssl:
+          trust: smtp.gmail.com
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:notification_db}
     username: ${DB_USERNAME:postgres}
@@ -25,8 +38,32 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
+ai-service:
+  url: ${AI_SERVICE_URL:http://localhost:8083}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      aiServiceCircuitBreaker:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        recordExceptions:
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - feign.FeignException
+  timelimiter:
+    instances:
+      aiServiceCircuitBreaker:
+        timeoutDuration: 5s
+        cancelRunningFuture: true
+
 logging:
   level:
     com.worker: DEBUG
     org.springframework.kafka: INFO
     org.hibernate: INFO
+    org.springframework.cloud.openfeign: DEBUG
+server:
+  port: 8085

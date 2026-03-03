@@ -36,8 +36,8 @@ url: https://yourusername.github.io
 baseurl: /ai-notification-platform
 
 aux_links:
-  "View on GitHub":
-    - "//github.com/yourusername/ai-notification-platform"
+   "View on GitHub":
+      - "//github.com/yourusername/ai-notification-platform"
 ```
 
 Replace `yourusername` with your actual GitHub username.

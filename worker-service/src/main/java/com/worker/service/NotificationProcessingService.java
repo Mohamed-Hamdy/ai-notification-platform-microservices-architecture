@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import java.util.Random;
 
 @Service
@@ -16,8 +18,10 @@ import java.util.Random;
 public class NotificationProcessingService {
 
     private final NotificationRepository notificationRepository;
+    private final AiEnhancementService aiEnhancementService;
     private static final int MAX_RETRY_ATTEMPTS = 3;
     private final Random random = new Random();
+    private final JavaMailSender mailSender;
 
     @Transactional
     public void processNotification(Long notificationId) {
@@ -30,7 +34,7 @@ public class NotificationProcessingService {
             notification.setStatus(NotificationStatus.PROCESSING);
             notificationRepository.save(notification);
 
-            simulateNotificationSending(notification);
+            enhanceAndSendNotification(notification);
 
             notification.setStatus(NotificationStatus.SENT);
             notification.setErrorMessage(null);
@@ -42,6 +46,30 @@ public class NotificationProcessingService {
             log.error("Failed to process notification ID: {}", notificationId, e);
             handleFailure(notification, e);
         }
+    }
+
+    private void enhanceAndSendNotification(Notification notification) throws InterruptedException {
+        String originalSubject = notification.getSubject();
+        String originalMessage = notification.getMessage();
+
+        AiEnhancementService.EnhancementResult result = aiEnhancementService.enhance(
+                originalSubject,
+                originalMessage,
+                notification.getChannel()
+        );
+
+        if (result.successful) {
+            log.info("Using AI-enhanced content. Confidence: {}", result.confidenceScore);
+            notification.setSubject(result.enhancedSubject);
+            notification.setMessage(result.enhancedMessage);
+            if ("EMAIL".equalsIgnoreCase(notification.getChannel())) {
+                sendEmail(notification); // real email sending
+            }
+        } else {
+            log.info("Using original content due to AI enhancement failure: {}", result.errorMessage);
+        }
+
+        simulateNotificationSending(notification);
     }
 
     private void simulateNotificationSending(Notification notification) throws InterruptedException {
@@ -88,6 +116,20 @@ public class NotificationProcessingService {
                         notification.getId(), notification.getRetryCount() + 1);
                 processNotification(notification.getId());
             }
+        }
+    }
+    private void sendEmail(Notification notification) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(notification.getRecipient());
+            helper.setSubject(notification.getSubject());
+            helper.setText(notification.getMessage(), true); // true = HTML
+
+            mailSender.send(message);
+            log.info("Email sent to {}", notification.getRecipient());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to send email", e);
         }
     }
 }

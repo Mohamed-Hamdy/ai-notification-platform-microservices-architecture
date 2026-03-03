@@ -13,21 +13,21 @@ This guide will help you set up and run the AI Notification Platform on your loc
 ### Required Software
 
 1. **Java 17**
-    - macOS: `brew install openjdk@17`
-    - Linux: `sudo apt install openjdk-17-jdk`
-    - Windows: Download from [Adoptium](https://adoptium.net/temurin/releases/?version=17)
-    - Verify: `java -version`
+   - macOS: `brew install openjdk@17`
+   - Linux: `sudo apt install openjdk-17-jdk`
+   - Windows: Download from [Adoptium](https://adoptium.net/temurin/releases/?version=17)
+   - Verify: `java -version`
 
 2. **Maven**
-    - macOS: `brew install maven`
-    - Linux: `sudo apt install maven`
-    - Windows: Download from [Maven](https://maven.apache.org/download.cgi)
-    - Verify: `mvn -version`
+   - macOS: `brew install maven`
+   - Linux: `sudo apt install maven`
+   - Windows: Download from [Maven](https://maven.apache.org/download.cgi)
+   - Verify: `mvn -version`
 
 3. **Docker & Docker Compose**
-    - macOS/Windows: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-    - Linux: `sudo apt install docker.io docker-compose`
-    - Verify: `docker --version && docker-compose --version`
+   - macOS/Windows: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+   - Linux: `sudo apt install docker.io docker-compose`
+   - Verify: `docker --version && docker-compose --version`
 
 ## Installation
 
@@ -127,9 +127,9 @@ curl -X POST http://localhost:8081/notifications \
 Expected response:
 ```json
 {
-  "id": 1,
-  "status": "PENDING",
-  "message": "Notification created successfully"
+   "id": 1,
+   "status": "PENDING",
+   "message": "Notification created successfully"
 }
 ```
 
@@ -138,7 +138,7 @@ Expected response:
 Check the worker-service terminal/logs to see the notification being processed. You should see:
 - Message consumed from Kafka
 - Status changed to PROCESSING
-- Simulated sending (2 second delay)
+- Simulated sending (2-second delay)
 - Status changed to SENT
 
 ## Troubleshooting
@@ -201,3 +201,4 @@ If Maven build fails:
 - [API Reference](api-reference.html) - Learn about available endpoints
 - [Architecture](architecture.html) - Understand the system design
 - [Development Guide](development.html) - Start contributing
+   
