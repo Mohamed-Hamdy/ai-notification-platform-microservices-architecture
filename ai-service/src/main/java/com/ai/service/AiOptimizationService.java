@@ -14,6 +14,10 @@ import java.util.Random;
 public class AiOptimizationService {
 
     private final Random random = new Random();
+    private final OllamaService ollamaService;
+    public AiOptimizationService(OllamaService ollamaService) {
+        this.ollamaService = ollamaService;
+    }
 
     private static final List<String> POWER_WORDS = Arrays.asList(
             "Exclusive", "Limited", "Urgent", "Important", "New", "Breakthrough",
@@ -25,6 +29,61 @@ public class AiOptimizationService {
     );
 
     public OptimizationResponse optimizeContent(OptimizationRequest request) {
+        log.info("Optimizing content via Ollama - Subject: {}", request.getSubject());
+
+        try {
+            // Build the AI prompt
+            String prompt = String.format(
+                    "Enhance this message for channel %s:\nSubject: %s\nMessage: %s",
+                    request.getChannel(),
+                    request.getSubject(),
+                    request.getMessage()
+            );
+
+            // Call OllamaService
+            OllamaService.GenerationResult result = ollamaService.generateMessage(prompt);
+
+            // Check if AI succeeded
+            String enhancedMessage;
+            Double confidence;
+            if (result.successful && result.content != null) {
+                enhancedMessage = result.content;
+                confidence = 0.95; // or compute based on your logic
+            } else {
+                log.warn("Ollama failed or returned null. Using fallback.");
+                enhancedMessage = enhanceMessage(request.getMessage(), request.getChannel());
+                confidence = 0.75;
+            }
+
+            return OptimizationResponse.builder()
+                    .originalSubject(request.getSubject())
+                    .optimizedSubject(request.getSubject()) // or parse AI response if needed
+                    .originalMessage(request.getMessage())
+                    .enhancedMessage(enhancedMessage)
+                    .optimizationStrategy("Ollama AI Optimization")
+                    .confidenceScore(confidence)
+                    .build();
+
+        } catch (Exception ex) {
+            log.error("AI enhancement failed, fallback triggered", ex);
+
+            // fallback logic
+            String optimizedSubject = optimizeSubject(request.getSubject(), request.getChannel());
+            String enhancedMessage = enhanceMessage(request.getMessage(), request.getChannel());
+            String strategy = determineStrategy(request.getChannel());
+            Double confidence = 0.75;
+
+            return OptimizationResponse.builder()
+                    .originalSubject(request.getSubject())
+                    .optimizedSubject(optimizedSubject)
+                    .originalMessage(request.getMessage())
+                    .enhancedMessage(enhancedMessage)
+                    .optimizationStrategy(strategy)
+                    .confidenceScore(confidence)
+                    .build();
+        }
+    }
+    public OptimizationResponse optimizeContentOld(OptimizationRequest request) {
         log.info("Optimizing content - Subject: {}", request.getSubject());
 
         try {

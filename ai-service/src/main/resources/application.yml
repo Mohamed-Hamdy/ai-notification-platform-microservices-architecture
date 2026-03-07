@@ -5,6 +5,26 @@ spring:
 server:
   port: ${SERVER_PORT:8083}
 
+ollama:
+  base-url: ${OLLAMA_URL:http://localhost:11434}
+  model: ${OLLAMA_MODEL:tinyllama}
+  temperature: ${OLLAMA_TEMPERATURE:0.7}
+  top-p: ${OLLAMA_TOP_P:0.9}
+  timeout-seconds: ${OLLAMA_TIMEOUT:30}
+
+notification:
+  channels:
+    - EMAIL
+    - SMS
+    - PUSH
+    - IN_APP
+    - WHATSAPP
+    - TELEGRAM
+  message-types:
+    - ALERT
+    - TRANSACTIONAL
+    - SYSTEM_UPDATE
+    - MARKETING
 logging:
   level:
     com.ai: DEBUG
